@@ -1,0 +1,25 @@
+body{
+    padding-top: 100px !important;
+    font-family: "SimHei","Simsun","Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#nav a.navbar-brand{
+    width:100px;
+    height:59px;
+    padding: 0;
+    background: url(../img/logo.png);
+}
+.carousel .carousel-inner .item img{
+    width:100%;
+}
+#footer .row img{
+    margin: auto;
+    width:100%;
+}
+#myCollapse .dropdown-menu{
+    width:500px;
+}
+@media screen and (max-width:767px){
+    #myCollapse .dropdown-menu{
+        width:100%;
+    }
+}

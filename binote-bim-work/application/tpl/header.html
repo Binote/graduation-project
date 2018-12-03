@@ -1,0 +1,343 @@
+<style>
+    .username{
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 300;
+    }
+    .dropdown-toggle>img{
+        float: left;
+        margin-top: -5px;
+        margin-right: 5px;
+        height: 29px;
+        display: inline-block;
+    }
+</style>
+<div class="container">
+    <div class="navbar-header">
+        <a data-href="/application/index/index.html" onclick="$(this).mainLoad()" href="javascript:;">
+            <img src="/assets/application/img/logo.png"/>
+        </a>
+        <a class="btn navbar-toggle" data-toggle="collapse" href="#myCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    </div>
+    <div class="navbar-collapse collapse" id="myCollapse">
+        <div class="dropdown navbar-right">
+            <a href="javascript:;" class="dropdown-toggle navbar-text" data-toggle="dropdown" id="btnLogin">登录<i class='fa fa-angle-down'></i></a>
+            <!--下拉菜单-->
+            <div class="dropdown-menu dropdown-menu-default pull-right">
+                <div class="panel">
+                    <div class="panel-body">
+
+                        <h3>登录</h3>
+                        <form id="heardFormLogin" action="javascript:;">
+                            <div class="form-group">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="text" class="form-control" name="umail" placeholder="账号"/>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="password" class="form-control" name="upwd" placeholder="密码"/>
+                                </div>
+
+
+                            </div>
+                            <p>您登录表明同意我们的服务条款</p>
+                            <buttom class="btn btn-primary" onclick="heardFormLogin.submit()">登录</buttom>
+
+                        </form>
+                        没有账号？<a data-href="/application/register/register.html" onclick="$(this).mainLoad()" href="javascript:;">请注册</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 导航-->
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a data-href="/application/socialPlatform/socialPlatform.html" onclick="$(this).mainLoad()" href="javascript:;">
+                    社会平台
+                </a>
+            </li>
+            <li>
+                <a data-href="/application/recruit/recruit.html" onclick="$(this).mainLoad()" href="javascript:;">
+                    招聘信息
+                </a>
+            </li>
+            <li>
+                <a data-href="/application/index/#" onclick="$(this).mainLoad()" href="javascript:;">
+                    优生推荐
+                </a>
+            </li>
+            <li>
+                <a data-href="/application/index/#" onclick="$(this).mainLoad()" href="javascript:;">
+                    培训学习
+                </a>
+            </li>
+            <li>
+                <a href="http://bisai.ccen.com.cn/front/index.action" target="_blank">
+                    比赛信息
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<script>
+    var heardFormLogin = function() {
+        var handleLogin = function() {
+            $("#heardFormLogin").validate({
+                errorElement: "span",
+                errorClass: "help-block",
+                rules: {
+                    umail: {
+                        required: true,
+                        email:true,
+                    },
+                    upwd: {
+                        required: true,
+                        rangelength:[6,12]
+                    },
+                },
+
+                invalidHandler: function(event, validator) { //display error alert on form submit
+                    $("#brandForm .alert-danger").show();
+                },
+                errorPlacement: function(error, element) {
+                    var icon = $(element).parent(".input-icon").children("i");
+                    icon.removeClass("fa-check").addClass("fa-warning");
+                    icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                },
+                highlight: function(element) { // hightlight error inputs
+                    $(element)
+                        .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                },
+
+                unhighlight: function(element) { // revert the change done by hightlight
+                    $(element)
+                        .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                },
+                success: function(label, element) {
+                    var icon = $(element).parent(".input-icon").children("i");
+                    $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                    icon.removeClass("fa-warning").addClass("fa-check");
+                },
+                submitHandler: function(form) {
+                    $(".alert-danger", $("#heardFormLogin")).hide();
+                    sdxCommon.apiCookies.remove("apiToken");
+                    sdxCommon.apiCookies.remove("username");
+                    var postData = $("#heardFormLogin").serializeObject();
+                    sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/login/login',{
+                        "method":"POST",
+                        "data":postData,
+                        "success":function (data) {
+                            console.log(data);
+                            sdxCommon.apiCookies.set("apiToken", data.obj.token);
+                            sdxCommon.apiCookies.set("username", data.obj.username);
+                            swal({
+                                title:"",
+                                text: data.msg,
+                                type: "success",
+                                button: "OK",
+                            },function(){
+                                window.location = "/";
+                            });
+
+                        },
+                        "fail": function(data) {
+                            swal("",data.msg,"error");
+                        },
+                    });
+                }
+            });
+            $("#heardFormLogin input").keypress(function(e) {
+                if (e.which == 13) {
+                    if ($("#heardFormLogin").validate().form()) {
+                        $("#heardFormLogin").submit();
+                    }
+                    return false;
+                }
+            });
+        };
+        return {
+            init: function() {
+                handleLogin();
+            },
+            submit:function () {
+                if ($("#heardFormLogin").validate().form()) {
+                    $("#heardFormLogin").submit();
+                }
+                return false;
+            },
+            logout:function () {
+                swal({
+                    title: "",
+                    text: "是否确定注销当前登录账号？",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "取消，继续使用",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "确认注销",
+                    closeOnConfirm: false,
+                    allowEscapeKey: false
+                }, function () {
+                    sdxCommon.apiCookies.remove("apiToken");
+                    sdxCommon.apiCookies.remove("username");
+                    sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/login/logout',{
+                        "success":function (data) {
+                            window.location = "/";
+                        },
+                        "fail": function(data) {
+                            swal("",data.msg,"error");
+                        },
+                    });
+
+                });
+
+            },
+            keepalive:function () {
+                sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/test/test',{
+                    "success":function (data) {
+                        console.log(data);
+                        if(data.error==7){
+                            //已登陆
+                            $("#btnLogin").html("<img alt='' class='img-circle' src='/assets/layout/images/avatar.png'><span class='username'>"+data.obj.username+"</span><i class='fa fa-angle-down'></i>").next().html(`
+<div><a style="padding: 3px 20px;" data-href="/application/userCenter/userCenter.html" onclick="$(this).mainLoad()">个人中心</a></div>
+<div role="separator" class="divider"></div>
+            <div><a href="javascript:;"  style="padding: 3px 20px;" data-href="/application/userCenter/employers.html" onclick="$(this).mainLoad()">雇主中心</a></div>
+            <div><a href="javascript:;" style="padding: 3px 20px;" data-href="/application/userCenter/engineer.html" onclick="$(this).mainLoad()">工程师中心</a></div>
+            <div role="separator" class="divider"></div>
+            <div><a href="javascript:;" style="padding: 3px 20px;" onclick="heardFormLogin.logout()">退出登录</a></div>
+                    `).css("width",0)
+                        }else if(data.error==6){
+                            //未登录
+                            sdxCommon.apiCookies.remove("apiToken");
+                            sdxCommon.apiCookies.remove("username");
+                            // sdxCommon.apiCookies.remove("username");
+                            $("#btnLogin").html("登录<i class='fa fa-angle-down'></i>").next().html(`
+<div class="panel">
+                    <div class="panel-body">
+
+                        <h3>登录</h3>
+                        <form id="heardFormLogin" action="javascript:;">
+                            <div class="form-group">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="text" class="form-control" name="umail" placeholder="账号"/>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="password" class="form-control" name="upwd" placeholder="密码"/>
+                                </div>
+
+
+                            </div>
+                            <p>您登录表明同意我们的服务条款</p>
+                            <buttom class="btn btn-primary" onclick="heardFormLogin.submit()">登录</buttom>
+
+                        </form>
+                        没有账号？<a data-href="/application/register/register.html" onclick="$(this).mainLoad()" href="javascript:;">请注册</a>
+                    </div>
+                </div>`).ready(function () {
+                                $("#heardFormLogin").validate({
+                                    errorElement: "span",
+                                    errorClass: "help-block",
+                                    rules: {
+                                        umail: {
+                                            required: true,
+                                            email:true,
+                                        },
+                                        upwd: {
+                                            required: true,
+                                            rangelength:[6,12]
+                                        },
+                                    },
+
+                                    invalidHandler: function(event, validator) { //display error alert on form submit
+                                        $("#brandForm .alert-danger").show();
+                                    },
+                                    errorPlacement: function(error, element) {
+                                        var icon = $(element).parent(".input-icon").children("i");
+                                        icon.removeClass("fa-check").addClass("fa-warning");
+                                        icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                                    },
+                                    highlight: function(element) { // hightlight error inputs
+                                        $(element)
+                                            .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                                    },
+
+                                    unhighlight: function(element) { // revert the change done by hightlight
+                                        $(element)
+                                            .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                                    },
+                                    success: function(label, element) {
+                                        var icon = $(element).parent(".input-icon").children("i");
+                                        $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                                        icon.removeClass("fa-warning").addClass("fa-check");
+                                    },
+                                    submitHandler: function(form) {
+                                        $(".alert-danger", $("#heardFormLogin")).hide();
+                                        sdxCommon.apiCookies.remove("apiToken");
+                                        sdxCommon.apiCookies.remove("username");
+                                        var postData = $("#heardFormLogin").serializeObject();
+                                        sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/login/login',{
+                                            "method":"POST",
+                                            "data":postData,
+                                            "success":function (data) {
+                                                console.log(data);
+                                                sdxCommon.apiCookies.set("apiToken", data.obj.token);
+                                                sdxCommon.apiCookies.set("username", data.obj.username);
+                                                swal({
+                                                    title:"",
+                                                    text: data.msg,
+                                                    type: "success",
+                                                    button: "OK",
+                                                },function(){
+                                                    window.location = "/";
+                                                });
+
+                                            },
+                                            "fail": function(data) {
+                                                swal("",data.msg,"error");
+
+                                            },
+                                        });
+                                    }
+                                });
+                                $("#heardFormLogin input").keypress(function(e) {
+                                    if (e.which == 13) {
+                                        if ($("#heardFormLogin").validate().form()) {
+                                            $("#heardFormLogin").submit();
+                                        }
+                                        return false;
+                                    }
+                                });
+                            })
+                        }
+
+                    },
+                    "fail": function(data) {
+                        swal("",data.msg,"error");
+                    },
+                });
+            }
+        };
+    }();
+
+    jQuery(document).ready(function() {
+        heardFormLogin.init();
+        console.log("bim匠心/登陆");
+        heardFormLogin.keepalive();
+    });
+
+</script>

@@ -1,0 +1,692 @@
+
+
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-fileinput-4.3.2/css/fileinput.min.css">
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.css">
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2-bootstrap.min.css">
+    <style>
+
+    </style>
+
+<div class="container main">
+    <div class="portlet light bordered" id="sdxEditor">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-truck font-dark"></i>
+                <span class="caption-subject font-dark sbold uppercase"> 社会平台 / 发布项目 </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <div class="btn-group">
+                        <button class="btn green btn-sm btn-outline" onclick="$(this).mainLoad()" data-href="/application/socialPlatform/socialPlatform.html"><i class="icon-list"></i> 项目列表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form id="sdxForm" class="form-horizontal" action="javascript:;">
+                <input type="hidden" name="PROID" readonly="readonly" value="">
+                <div class="form-body">
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>数据校验失败，请参照反馈状态进行修改</div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 项目分类 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="proClassify" class="form-control">
+                                        <option value="" hidden>请选择项目分类</option>
+                                        <option value="钢筋">钢筋</option>
+                                        <option value="土建">土建</option>
+                                        <option value="安装">安装</option>
+                                        <option value="预算计价">预算计价</option>
+                                        <option value="结算计价">结算计价</option>
+                                        <option value="BIM5D">BIM5D</option>
+                                        <option value="三维场布">三维场布</option>
+                                        <option value="梦龙计划">梦龙计划</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 项目地区 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="area" class="form-control">
+                                        <option value="" hidden>请选择项目地区</option>
+                                        <option value="丰城市">丰城市</option>
+                                        <option value="樟树市">樟树市</option>
+                                        <option value="袁州区">袁州区</option>
+                                        <option value="高安市">高安市</option>
+                                        <option value="铜鼓县">铜鼓县</option>
+                                        <option value="靖安县">靖安县</option>
+                                        <option value="宜丰县">宜丰县</option>
+                                        <option value="奉新县">奉新县</option>
+                                        <option value="万载县">万载县</option>
+                                        <option value="上高县">上高县</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 项目用途 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="proPurpose" class="form-control">
+                                        <option value="" hidden>请选择项目用途</option>
+                                        <option value="概算">概算</option>
+                                        <option value="招投标">招投标</option>
+                                        <option value="结算">结算</option>
+                                        <option value="施工图预算">施工图预算</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 项目类型 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                <select name="proType" class="form-control">
+                                    <option value="" hidden>请选择项目类型</option>
+                                    <option value="办公楼/写字楼">办公楼/写字楼</option>
+                                    <option value="多层住宅">多层住宅</option>
+                                    <option value="高层住宅">高层住宅</option>
+                                    <option value="厂房/仓库">厂房/仓库</option>
+                                    <option value="市政">市政</option>
+                                    <option value="宿舍/公寓">宿舍/公寓</option>
+                                    <option value="公租房">公租房</option>
+                                    <option value="别墅/洋房">别墅/洋房</option>
+                                    <option value="酒店">酒店</option>
+                                    <option value="学校">学校</option>
+                                    <option value="幼儿园">幼儿园</option>
+                                    <option value="桥梁">桥梁</option>
+                                    <option value="公路/铁路">公路/铁路</option>
+                                    <option value="公厕">公厕</option>
+                                    <option value="医院">医院</option>
+                                    <option value="影剧院">影剧院</option>
+                                    <option value="水利水电石油">水利水电石油</option>
+                                    <option value="其他">其他</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" id="major">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label" ><span class="text-danger">*</span> 选择项目专业<br><span class="text-danger">可多选，至少选一个</span></label>
+                            <div class="col-md-5">
+                            <div class="input-icon right">
+                                <i class="fa"></i>
+                                <select name="tujian" class="form-control select2-hidden-accessible" multiple data-placeholder="土建">
+                                    <option value="" hidden></option>
+                                    <option value="主体结构">主体结构</option>
+                                    <option value="砌体结构">砌体结构</option>
+                                    <option value="防水工程">防水工程</option>
+                                    <option value="地基处理">地基处理</option>
+                                    <option value="边坡支护">边坡支护</option>
+                                    <option value="挖土方">挖土方</option>
+                                    <option value="回填土">回填土</option>
+                                </select>
+                            </div>
+                        </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="gangjin" class="form-control select2-hidden-accessible" multiple data-placeholder="钢筋">
+                                        <option value="" hidden></option>
+                                        <option value="主体结构预算钢筋">主体结构预算钢筋</option>
+                                        <option value="砌体预算钢筋">砌体预算钢筋</option>
+                                        <option value="主体结构下料钢筋">主体结构下料钢筋</option>
+                                        <option value="砌体下料钢筋">砌体下料钢筋</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="jipaipaishui" class="form-control select2-hidden-accessible" multiple data-placeholder="给水排水">
+                                        <option value="" hidden></option>
+                                        <option value="给水管线预留预埋">给水管线预留预埋</option>
+                                        <option value="给水终端安装">给水终端安装</option>
+                                        <option value="排水管线预留预埋">排水管线预留预埋</option>
+                                        <option value="排水终端安装">排水终端安装</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="nuantongranqi" class="form-control select2-hidden-accessible" multiple data-placeholder="暖通燃气">
+                                        <option value="" hidden></option>
+                                        <option value="采暖系统管线预留预埋">采暖系统管线预留预埋</option>
+                                        <option value="采暖系统终端安装">采暖系统终端安装</option>
+                                        <option value="通风系统管线预留预埋">通风系统管线预留预埋</option>
+                                        <option value="通风系统终端安装">通风系统终端安装</option>
+                                        <option value="空调水管线预留预埋">空调水管线预留预埋</option>
+                                        <option value="空调水终端安装">空调水终端安装</option>
+                                        <option value="空调电管线预留预埋">空调电管线预留预埋</option>
+                                        <option value="空调电终端安装">空调电终端安装</option>
+                                        <option value="燃气系统管线预留预埋">燃气系统管线预留预埋</option>
+                                        <option value="燃气系统终端安装">燃气系统终端安装</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="shineizhuangxiu" class="form-control select2-hidden-accessible" multiple data-placeholder="室内装修">
+                                        <option value="" hidden></option>
+                                        <option value="初装(做到基层)">初装(做到基层)</option>
+                                        <option value="精装(做到面层)">精装(做到面层)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="dianqixiaofang" class="form-control select2-hidden-accessible" multiple data-placeholder="电器消防">
+                                        <option value="" hidden></option>
+                                        <option value="强电系统管线预留预埋">强电系统管线预留预埋</option>
+                                        <option value="强电系统终端安装">强电系统燃气系统终端安装</option>
+                                        <option value="弱电系统管线预留预埋">弱电系统管线预留预埋</option>
+                                        <option value="弱电系统终端安装">弱电系统终端安装</option>
+                                        <option value="消防水管线预留预埋">消防水管线预留预埋</option>
+                                        <option value="消防水终端安装">消防水终端安装</option>
+                                        <option value="消防电管线预留预埋">消防电管线预留预埋</option>
+                                        <option value="消防电终端安装">消防电终端安装</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="shizhenglvhua" class="form-control select2-hidden-accessible" multiple data-placeholder="市政绿化">
+                                        <option value="" hidden></option>
+                                        <option value="道路">道路</option>
+                                        <option value="绿化">绿化</option>
+                                        <option value="雨污水">雨污水</option>
+                                        <option value="景观亮化">景观亮化</option>
+                                        <option value="室外管线">室外管线</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="waiqiangzhuangxiu" class="form-control select2-hidden-accessible" multiple data-placeholder="外墙装修">
+                                        <option value="" hidden></option>
+                                        <option value="外墙保温">外墙保温</option>
+                                        <option value="外墙面装修">外墙面装修</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 需求分类 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <select name="requirementType" class="form-control">
+                                        <option value="" hidden>请选择需求分类</option>
+                                        <option value="算量">算量</option>
+                                        <option value="算量+组价">算量+组价</option>
+                                        <option value="组价">组价</option>
+                                        <option value="算量+编清单">算量+编清单</option>
+                                        <option value="编清单">编清单</option>
+                                        <option value="编清单+组价">编清单+组价</option>
+                                        <option value="算量+编清单+组价">算量+编清单+组价</option>
+                                        <option value="算量+定额组价">算量+定额组价</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 交付时间 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="text" placeholder="点击选择交付时间" class="form-control date-picker" readonly name="deliveryTime" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 总建筑规模 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+
+                                        <input type="number" placeholder="请输入总建筑规模" class="form-control" name="constructionScale" autocomplete="off" />
+                                        <span class="input-group-addon">
+                                            <select name="unit" style="background: #eee;border: 0px ">
+                                                <option value="平方米">平方米</option>
+                                                <option value="公里">公里</option>
+                                                <option value="万元">万元</option>
+                                            </select>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 其中地下室面积 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+
+                                        <input type="number" placeholder="如果有地下室请填写" class="form-control" name="basement" autocomplete="off" />
+                                        <span class="input-group-addon">平方米</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 单体数量 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="number" placeholder="请输入单体数量" class="form-control" name="cellQuantity" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 软件供应商 </label>
+                            <div class="col-md-9">
+                                <div class="col-md-6" style="padding: 0">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <select name="softVendor" class="form-control select2-hidden-accessible">
+                                            <option value="广联达">广联达</option>
+                                            <option value="斯威尔">斯威尔</option>
+                                            <option value="鲁班">鲁班</option>
+                                            <option value="品茗">品茗</option>
+                                            <option value="宏业">宏业</option>
+                                            <option value="新点">新点</option>
+                                            <option value="一点智慧">一点智慧</option>
+                                            <option value="AutoCAD">AutoCAD</option>
+                                            <option value="Revit">Revit</option>
+                                            <option value="Tekla">Tekla</option>
+                                            <option value="Magicad">Magicad</option>
+                                            <option value="PKPM">PKPM</option>
+                                            <option value="天正">天正</option>
+                                            <option value="其他">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding: 0">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" placeholder="请输入软件供应商" class="form-control" name="project[softVendor]" autocomplete="off" style="display: none"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 项目描述 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <textarea name="describe" rows="8" placeholder="请输入项目描述" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span>上传图纸及资料</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input id="input-id" name="file" multiple type="file" data-show-caption="true">
+                                </div>
+                                <div class="md-checkbox">
+                                    <input type="checkbox" id="checkbox1" class="md-check" name="hasCAD" checked>
+                                    <label for="checkbox1">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> <b>有CAD图纸</b> </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <ul class="well list-group">
+                                <li class="list-group-item text-danger">*尺寸：小于300M 数量小于1</li>
+                                <li class="list-group-item text-danger">*建议上传平面图、立面图、图纸目录及相关项目资料，如需保密请手动删除图纸项目名称。</li>
+                                <li class="list-group-item text-danger">*请尽量上传图纸，方便平台审核项目和工程师评估报价</li>
+                                <li class="list-group-item text-danger">*请先压缩后再上传，格式仅支持zip！</li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"><span class="text-danger">*</span> 费用预算 </label>
+                            <div class="col-md-9">
+
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+                                        <input type="number" placeholder="(请按市场价值填写，低价有风险)" class="form-control" name="price" min="0" autocomplete="off" />
+                                        <div class="input-group-addon">元</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 备注 </label>
+                            <div class="col-md-9">
+                                <input class="form-control" name="PROEXPLAIN" data-role="tagsinput" placeholder="增加" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9 text-right">
+                                <a class="btn default" data-href="/application/socialPlatform/socialPlatform.html" onclick="$(this).mainLoad()" href="javascript:;"> 取消，返回项目列表 </a>
+                                <button type="submit" class="btn green"> 提交项目 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <script src="/assets/plugins/select2/js/select2.full.js"></script>
+    <script src="/assets/plugins/select2/js/i18n/zh-CN.js"></script>
+    <script src="/assets/plugins/bootstrap-fileinput-4.3.2/js/fileinput.min.js"></script>
+    <script src="/assets/plugins/bootstrap-fileinput-4.3.2/js/locales/zh.js"></script>
+    <script>
+        var sdxObj=function () {
+            var handleForm = function() {
+                $("#sdxForm").validate({
+                    errorElement: "span",
+                    errorClass: "help-block",
+                    rules: {
+                        /*uname: {
+                            required: true,
+                            rangelength:[2,10]
+                        },
+                        umail: {
+                            required: true,
+                            email:true,
+                        },
+                        upwd: {
+                            required: true,
+                            rangelength:[6,12]
+                        },*/
+                        proClassify:{
+                            required: true,
+                        },
+                        area:{
+                            required: true,
+                        },
+                        proPurpose:{
+                            required: true,
+                        },
+                        proType:{
+                            required: true,
+                        },
+                        major:{
+                            required: true,
+                        },
+                        requirementType:{
+                            required: true,
+                        },
+                        deliveryTime:{
+                            required: true,
+                        },
+                        constructionScale:{
+                            required: true,
+                        },
+                        cellQuantity:{
+                            required: true,
+                        },
+                        softVendor:{
+                            required: true,
+                        },
+                        describe:{
+                            required: true,
+                        },
+                        waiqiangzhuangxiu:{
+                          required:function () {
+                              if($("#major [name=tujian]").val()=="" && $("#major [name=gangjin]").val()=="" && $("#major [name=jipaipaishui]").val()=="" && $("#major [name=nuantongranqi]").val()=="" && $("#major [name=shineizhuangxiu]").val()=="" && $("#major [name=dianqixiaofang]").val()=="" && $("#major [name=shizhenglvhua]").val()==""&& $("#major [name=waiqiangzhuangxiu]").val()==""){
+                                  return true;
+                              }else{
+                                  return false;
+                              }
+                          }
+                        },
+                        'project[softVendor]':{
+                            required: function () {
+                                if($("#sdxForm [name='softVendor']").val()=='其他'){
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+                            },
+                        },
+                        price:{
+                            required:true,
+                        }
+
+                    },
+                    invalidHandler: function(event, validator) { //display error alert on form submit
+                        $("#sdxForm .alert-danger").show();
+                    },
+                    errorPlacement: function(error, element) {
+                        var icon = $(element).parents(".input-icon").children("i");
+                        icon.removeClass("fa-check").addClass("fa-warning");
+                        icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                    },
+                    highlight: function(element) { // hightlight error inputs
+                        $(element)
+                            .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                    },
+
+                    unhighlight: function(element) { // revert the change done by hightlight
+                        $(element)
+                            .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                    },
+                    success: function(label, element) {
+                        var icon = $(element).parents(".input-icon").children("i");
+                        $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                        icon.removeClass("fa-warning").addClass("fa-check");
+                    },
+                    submitHandler: function(form) {
+                        $(".alert-danger", $("#sdxForm")).hide();
+
+                            var formData = new FormData($("#sdxForm")[0]);  // 要求使用的html对象
+
+                            $.ajax({
+                                url:sdxCommon.apiRoot+"/bimjx/socialPlatform/socialPlatSubmit" ,
+                                type: 'POST',
+                                data: formData,
+                                async: true,
+                                // 下面三个参数要指定，如果不指定，会报一个JQuery的错误
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (data) {
+                                    if(data.status){
+                                        swal({
+                                            title:"",
+                                            text: data.msg,
+                                            type: "success",
+                                            button: "OK",
+                                        },function(){
+                                            $("#body-container").load("/application/socialPlatform/socialPlatform.html");
+                                        });
+                                    }else{
+                                        if(data.error==6){
+                                            swal({
+                                                title:"",
+                                                text: data.msg,
+                                                type: "warning",
+                                                button: "OK",
+                                            },function(){
+                                                heardFormLogin.keepalive();
+                                                $("#body-container").load("/application/login/login.html");
+                                            });
+                                        }else{
+                                            swal({
+                                                title:"",
+                                                text: data.msg,
+                                                type: "error",
+                                                button: "OK",
+                                            });
+                                        }
+                                    }
+                                },
+                                error: function (data) {
+                                    console.log(data)
+                                }
+                            });
+                        }
+
+                });
+            };
+            return {
+                initFileInput: function (ctrlName) {
+                var control = $('#' + ctrlName);
+                control.fileinput({
+                    language: 'zh', //设置语言
+                    uploadUrl: sdxCommon.apiRoot+"/upload", //上传的地址
+                    allowedFileExtensions: ["zip"],//接收的文件后缀
+                    maxFilesNum : 3,//上传最大的文件数量
+                    //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
+                    uploadAsync: true, //默认异步上传
+                    showUpload: false, //是否显示上传按钮
+                    showRemove : true, //显示移除按钮
+                    showPreview : false, //是否显示预览
+                    showCaption: false,//是否显示标题
+                    browseClass: "btn btn-primary", //按钮样式
+                    //dropZoneEnabled: true,//是否显示拖拽区域
+                    //minImageWidth: 50, //图片的最小宽度
+                    //minImageHeight: 50,//图片的最小高度
+                    //maxImageWidth: 1000,//图片的最大宽度
+                    //maxImageHeight: 1000,//图片的最大高度
+                    maxFileSize: 307200,//单位为kb，如果为0表示不限制文件大小
+                    //minFileCount: 0,
+                    maxFileCount: 3, //表示允许同时上传的最大文件个数
+                    enctype: 'multipart/form-data',
+                    validateInitialCount:true,
+                    previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                    msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+                })/*.on('filepreupload', function(event, data, previewId, index) {     //上传中
+                    var form = data.form, files = data.files, extra = data.extra,
+                        response = data.response, reader = data.reader;
+                    console.log('文件正在上传');
+                }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+                    console.log('文件上传成功！'+data.id);
+
+                }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+                    console.log('文件上传失败！'+data.id);
+                })*/
+            },
+                handleForm:handleForm,
+        }
+        }();
+        jQuery(document).ready(function() {
+            console.log("bim匠心/社会平台/发布项目");
+            scrollTo(0,0);
+            $("#sdxEditor [name='PROEXPLAIN']").tagsinput();
+            $(".select2-hidden-accessible").select2({
+                "language": "zh-CN",
+                "theme": "bootstrap",
+                "width": "100%"
+            });
+            /*if (jQuery().datepicker) {
+                $('.date-picker').datepicker({
+                    todayHighlight: true,
+                    todayBtn: "linked",
+                    format: 'yyyy-mm-dd',
+                    timeFormat: 'hh:mm',
+                    language: 'zh-CN',
+                    rtl: App.isRTL(),
+                    orientation: "left",
+                    autoclose: true,
+                });
+            }*/
+            if($().datetimepicker){
+                $('.date-picker').datetimepicker({
+                    format:"yyyy-mm-dd hh:ii",
+                    language:"zh-CN",
+                     todayHighlight:true,
+                    todayBtn:true,
+                    autoclose: true,
+                    startDate:new Date(),
+                });
+
+            }
+            sdxObj.initFileInput("input-id");
+            sdxObj.handleForm();
+            $("#sdxForm [name='softVendor']").on('change',function () {
+                if($(this).val()=="其他"){
+                    $("#sdxForm [name='project[softVendor]']").show();
+                }else{
+                    $("#sdxForm [name='project[softVendor]']").val("").hide();
+                }
+            });
+            $("#major").on("change",'select',function () {
+                $("#major .form-group").removeClass("has-error")
+            });
+
+            if(sdxCommon.apiCookies.get("username")){
+                // $("#body-container").load("/application/socialPlatform/socialPlatform.html");
+                // console.log(sdxCommon.username)
+            }else{
+                swal({
+                    title:"",
+                    text: "您还未登录，请登录后再发布项目！",
+                    type: "warning",
+                    button: "OK",
+                },function(){
+                    sdxCommon.apiCookies.set("prev","/application/socialPlatform/socialPlatSubmit.html");
+                    $("#body-container").load("/application/login/login.html");
+                });
+            }
+
+
+        });
+
+    </script>

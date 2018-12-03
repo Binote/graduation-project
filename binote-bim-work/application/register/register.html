@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="/assets/application/style/login.min.css">
+    <style>
+        .main {
+            position: relative;
+        }
+
+        .box {
+            /*width: 600px;*/
+            /*min-height: 400px;*/
+            background: rgba(230,230,255, .7);
+            border-radius: 5px;
+            /*margin: 100px auto;*/
+            padding: 1.5em;
+        }
+        .boxbox{
+            padding:5em;
+        }
+    </style>
+
+<div class="container main">
+    <div class=" login">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/application/img/logo.png" height="59" width="100"/> </a>
+        </div>
+
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+    <!-- BEGIN REGISTRATION FORM -->
+    <form id="registerForm" action="javascript:;">
+        <h3 class="font-green">注册</h3>
+        <p class="hint"> 请输入您的个人信息: </p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">用户名</label>
+            <div class="input-icon right">
+                <i class="fa"></i>
+                <input class="form-control" id="uname" name="uname" placeholder="请输入您的用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">手机号</label>
+            <div class="input-icon right">
+                <i class="fa"></i>
+                <input class="form-control" id="phone" name="phone" placeholder="请输入您的手机号码">
+            </div>
+        </div>
+        <p class="hint"> 请输入您的账号信息: </p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">登录邮箱</label>
+            <div class="input-icon right">
+                <i class="fa"></i>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="请输入您的登录邮箱" name="umail" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <div class="input-icon right">
+                <i class="fa"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="upwd" placeholder="请输入您的登录密码" name="upwd" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">确认密码</label>
+            <div class="input-icon right">
+                <i class="fa"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="请输入确认密码" name="rupwd" />
+            </div>
+        </div>
+        <div class="form-group margin-top-20 margin-bottom-20">
+            <label class="mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" name="tnc" /> 我同意
+                <a href="javascript:;">服务条款 </a> 和
+                <a href="javascript:;">隐私合同 </a>
+                <span></span>
+            </label>
+            <div id="register_tnc_error"> </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" id="register-submit-btn" onclick="registerObj.submit()" class="btn btn-success uppercase pull-right">注册</button>
+        </div>
+    </form>
+    <!-- END REGISTRATION FORM -->
+        </div>
+        <div class="copyright"> 2018 褚俊阳毕业设计作品 </div>
+        <!--[if lt IE 9]>
+        <script src="/assets/plugins/respond.min.js"></script>
+        <script src="/assets/plugins/excanvas.min.js"></script>
+        <script src="/assets/plugins/ie8.fix.min.js"></script>
+        <![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    </div>
+</div>
+   <!-- <div class="row boxbox">
+    <div class="box col-md-7 col-md-offset-2">
+        <form class="form-horizontal" id="registerForm">
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>数据校验失败，请参照反馈状态进行修改</div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <h1>欢迎注册：</h1>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="umail"><span class="text-danger">*</span>EMail：</label>
+                <div class="col-sm-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                    <input class="form-control" id="umail" name="umail" placeholder="请输入您的邮箱地址">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block">邮箱地址是您的登陆账号</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="uname"><span class="text-danger">*</span>用户名：</label>
+                <div class="col-sm-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                    <input class="form-control" id="uname" name="uname" placeholder="请输入您的用户名">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block">用户名是您的昵称</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="upwd"><span class="text-danger">*</span>密码：</label>
+                <div class="col-sm-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                    <input class="form-control" type="password"  id="upwd" name="upwd" placeholder="请输入您想注册的密码">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block">密码长度在6~12位之间</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="phone">手机号：</label>
+                <div class="col-sm-5">
+                    <input class="form-control" id="phone" name="phone" placeholder="请输入您的手机号码">
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5 col-sm-offset-2">
+                    <input id="bt-register" onclick="registerObj.submit()" class="btn btn-success btn-block" type="button" value="注册">
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>-->
+
+    <script>
+        var registerObj=function () {
+            var handleReguster = function() {
+                $("#registerForm").validate({
+                    errorElement: "span",
+                    errorClass: "help-block",
+                    rules: {
+                        uname: {
+                            required: true,
+                            rangelength:[2,10]
+                        },
+                        umail: {
+                            required: true,
+                            email:true,
+                        },
+                        upwd: {
+                            required: true,
+                            rangelength:[6,12]
+                        },
+                        rupwd:{
+                            equalTo: "#upwd",
+                            required: true,
+                            rangelength:[6,12]
+                        }
+                    },
+                    invalidHandler: function(event, validator) { //display error alert on form submit
+                        $("#registerForm .alert-danger").show();
+                    },
+                    errorPlacement: function(error, element) {
+                        var icon = $(element).parent(".input-icon").children("i");
+                        icon.removeClass("fa-check").addClass("fa-warning");
+                        icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                    },
+                    highlight: function(element) { // hightlight error inputs
+                        $(element)
+                            .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                    },
+
+                    unhighlight: function(element) { // revert the change done by hightlight
+                        $(element)
+                            .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                    },
+                    success: function(label, element) {
+                        var icon = $(element).parent(".input-icon").children("i");
+                        $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                        icon.removeClass("fa-warning").addClass("fa-check");
+                    },
+                    submitHandler: function(form) {
+                        $(".alert-danger", $("#registerForm")).hide();
+                        sdxCommon.apiCookies.remove("apiToken");
+                        var postData = $("#registerForm").serializeObject();
+                        sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/register/register',{
+                            "method":"POST",
+                            "data":postData,
+                            "success":function (data) {
+                                console.log(data);
+                                swal("",data.msg,"success");
+                                $("#body-container").load("/application/login/login.html");
+                            },
+                            "fail": function(data) {
+                                swal("",data.msg,"error");
+                            },
+                        });
+                    }
+                });
+                $("#registerForm input").keypress(function(e) {
+                    if (e.which == 13) {
+                        if ($("#registerForm").validate().form()) {
+                            $("#registerForm").submit();
+                        }
+                        return false;
+                    }
+                });
+            };
+            return {
+                handleReguster:handleReguster,
+                submit: function () {
+                    if ($("#registerForm").validate().form()) {
+                        $("#registerForm").submit();
+                    }
+                    return false;
+
+                }
+            }
+        }();
+        jQuery(document).ready(function() {
+            registerObj.handleReguster();
+            console.log("bim匠心/注册");
+            scrollTo(0,0);
+        });
+
+    </script>

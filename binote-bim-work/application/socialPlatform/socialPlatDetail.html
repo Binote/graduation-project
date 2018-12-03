@@ -1,0 +1,630 @@
+ <style>
+    .form-control{
+        min-height: 34px;
+        height:  initial;
+    }
+    #tenderListContainer img{
+        float: left;
+        margin-top: -5px;
+        margin-right: 5px;
+        height: 35px;
+        display: inline-block;
+    }
+</style>
+
+<div class="container main">
+    <div class="portlet light bordered" id="sdxEditor">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-truck font-dark"></i>
+                <span class="caption-subject font-dark sbold uppercase"> 社会平台 / 项目详情 </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <div class="btn-group">
+                        <button class="btn green btn-sm btn-outline" onclick="$(this).mainLoad()" data-href="/application/socialPlatform/socialPlatform.html"><i class="icon-list"></i> 项目列表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="row text-center" id="proName"></h2>
+        <div class="portlet-body form">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 项目分类 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="proClassify" class="form-control">
+
+                                    </span>
+                                </div>
+                                </div>
+                            </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 项目地区 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="area" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 项目用途 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="proPurpose" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 项目类型 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                <span id="proType" class="form-control">
+
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" id="major">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-label" > 项目专业</label>
+                            <div class="col-md-5">
+                            <div class="input-icon right">
+                                <i class="fa"></i>
+                                <span id="tujian" class="form-control">
+                                </span>
+                            </div>
+                        </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="gangjin" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="col-md-5  col-md-offset-2">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="jipaipaishui" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="nuantongranqi" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="shineizhuangxiu" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="dianqixiaofang" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="shizhenglvhua" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="waiqiangzhuangxiu" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 需求分类 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="requirementType" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 交付时间 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="deliveryTime" class="form-control">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 总建筑规模 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+
+                                        <span class="form-control" id="constructionScale">
+
+                                        </span>
+                                        <span class="input-group-addon">
+                                            <span id="unit">
+
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 其中地下室面积 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+
+                                        <span id="basement" class="form-control">
+
+                                        </span>
+                                        <span class="input-group-addon">平方米</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 单体数量 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span class="form-control" id="cellQuantity">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 软件供应商 </label>
+                            <div class="col-md-9">
+                                <div class="col-md-6" style="padding: 0">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <span id="softVendor" class="form-control">
+
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding: 0">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <span class="form-control" id="project[softVendor]" style="display: none">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 项目描述 </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span id="describe" class="form-control" style="min-height: 100px">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label">图纸及资料</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span class="form-control" id="zipurl">
+
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label">是否有CAD图纸</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <span  id="hasCAD">
+
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 费用预算 </label>
+                            <div class="col-md-9">
+
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group">
+                                        <span class="form-control" id="price" >
+                                        </span>
+                                        <div class="input-group-addon">元</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-3 control-label"> 备注 </label>
+                            <div class="col-md-9">
+                                <span class="form-control" id="PROEXPLAIN">
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label"><span class="text-danger">*</span> 投标宣言 </label>
+                        <div class="input-icon right">
+                            <i class="fa"></i>
+                            <textarea name="manifesto" class="form-control" id="manifesto" cols="30" rows="10" placeholder="请仔细填写投标宣言，以便雇主评估选择！"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-2">
+
+                                <button type="button" class="btn yellow btn-block" onclick="sdxObj.tenderFun()"> 参与投标 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!--<div class="">
+        <h2>投标工程师</h2>
+        <div id="tenderListContainer" class="container">
+            <div class="well">
+                <p class="row"><img alt='' class='img-circle' src='/assets/apps/account/images/avatar.png'><span>binote</span></p>
+                <p class="row">
+                    <label class="col-md-3 control-label"> 备注 </label>
+                <div class="col-md-9">
+                                <span class="form-control" >
+                                </span>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                投标工程师
+            </h3>
+        </div>
+        <div id="tenderListContainer"  class="panel-body">
+
+        </div>
+    </div>
+</div>
+    <script>
+        var sdxObj=function () {
+            var PROID;
+            if(sdxCommon.rootSpace.PROID) {
+                sdxCommon.apiCookies.set("PROID", sdxCommon.rootSpace.PROID);
+                PROID=sdxCommon.rootSpace.PROID;
+            }else{
+                PROID=sdxCommon.apiCookies.get("PROID");
+            }
+            var majorTableFun=function (majorObj,majorKey) {
+                var  majorBtn="";
+                if(majorObj[majorKey].constructor==Array){
+                    for(var majorVal of majorObj[majorKey]){
+                        majorBtn+='<span class="btn default btn-sm">'+majorVal+'</span>'
+                    }
+                }else{
+                    majorBtn+='<span class="btn default btn-sm">'+majorObj[majorKey]+'</span>'
+                }
+                var majorHtml="<tr><th class='text-center' style='line-height: 29.6px'>"+majorTableTitleFun(majorKey)+"</th><td>"+majorBtn+"</td></tr>";
+                return majorHtml;
+            };
+            var majorTableTitleFun=function (majorKey) {
+                switch (majorKey) {
+                    case "tujian":
+                        return "土建";
+                    case "gangjin":
+                        return "钢筋";
+                    case "jipaipaishui":
+                        return "给水排水";
+                    case "nuantongranqi":
+                        return "暖通燃气";
+                    case "shineizhuangxiu":
+                        return "室内装修";
+                    case "dianqixiaofang":
+                        return "电器消防";
+                    case "shizhenglvhua":
+                        return "市政绿化";
+                    case "waiqiangzhuangxiu":
+                        return "外墙装修";
+                }
+            };
+            return {
+                initDetails: function () {
+                    sdxCommon.ajaxLoad(sdxCommon.apiRoot + "/bimjx/socialPlatform/detail", {
+                        data: {
+                            PROID: PROID
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            var detail = data.obj.detail;
+                            for (var k in detail) {
+                                if (k == "zipurl") {
+                                    var zipurl = '';
+                                    if (detail[k]) {
+                                        var zipurlList = detail[k].split(",");
+                                        for (var zipurItem of zipurlList) {
+                                            if (zipurItem) {
+                                                zipurl += '<a href="' + zipurItem + '" class="btn blue btn-xs" style="margin-right: 3px;">下载资料</a>'
+                                            }
+                                        }
+                                        $("#" + k).html(zipurl);
+                                    }
+                                    continue;
+                                }
+                                if (k == "PROEXPLAIN") {
+                                    var PROEXPLAIN = '';
+                                    if (detail[k]) {
+                                        var PROEXPLAINList = detail[k].split(",");
+                                        for (var PROEXPLAINItem of PROEXPLAINList) {
+                                            if (PROEXPLAINItem) {
+                                                PROEXPLAIN += '<span class="btn default btn-xs" style="margin-right: 3px;">' + PROEXPLAINItem + '</span>'
+                                            }
+                                        }
+                                        $("#" + k).html(PROEXPLAIN);
+                                    }
+                                    continue;
+                                }
+                                if (k == "major") {
+                                    var majorObj = JSON.parse(detail[k]);
+                                    var majorHtml = '<table class="table table-bordered table-hover"><thead><tr><th colspan="2" class="text-center">项目专业</th></tr></thead>';
+                                    for (var majorKey in majorObj) {
+                                        majorHtml += majorTableFun(majorObj, majorKey)
+                                    }
+                                    majorHtml += '</table>';
+                                    $("#" + k).html(majorHtml);
+                                    continue;
+                                }
+                                if (k == "hasCAD") {
+                                    $("#" + k).html(detail[k] == 1 ? "<span class='btn green btn-xs'>是</span>" : "<span class='btn red btn-xs'>否</span>");
+                                    continue;
+                                }
+                                if (k == "tenderList") {
+                                if(data.obj.detail.state>1){
+                                    var tenderListHtml = "";
+                                    for (var tenderItem of detail[k]) {
+                                        if (tenderItem.userId == data.obj.detail.tenderer) {
+                                            var employersBtn = '';
+                                            if (data.obj.userId == data.obj.detail.userId) {
+                                                employersBtn = '<a  class="btn blue btn-xs" target="_blank" href="' + tenderItem.resumeUrl + '">查看简历</a>'
+                                            }
+                                            tenderListHtml += '<div class="well">\n' +
+                                                '                <div class="row">\n' +
+                                                '                    <img alt="" class="img-circle" src="/assets/apps/account/images/avatar.png\"><span class="h3">' + tenderItem.userName + '</span><span class="text-danger">中标工程师</span>' + employersBtn +
+                                                '                </div>\n' +
+                                                '                <div class="row">\n' +
+                                                '                    <div class="col-md-6 col-md-offset-6">\n' +
+                                                '                        <label class="col-md-3 control-label h4"> 投标宣言 </label>\n' +
+                                                '                        <div class="col-md-9">\n' +
+                                                '                                <span class="form-control" ><b>' + tenderItem.manifesto +
+                                                '                                </b></span>' +
+                                                '                        </div>\n' +
+                                                '                    </div>\n' +
+                                                '\n' +
+                                                '                </div>' +
+                                                '            </div>';
+                                        }
+
+                                        $("#tenderListContainer").html(tenderListHtml);
+                                    }
+                                }else {
+
+                                        var tenderListHtml = "";
+                                        for (var tenderItem of detail[k]) {
+                                            var employersBtn = '';
+                                            if (data.obj.userId == data.obj.detail.userId) {
+                                                employersBtn = '<a  class="btn blue btn-xs" target="_blank" href="' + tenderItem.resumeUrl + '">查看简历</a> <a  class="btn green btn-xs" onclick="sdxObj.designate(\'' + tenderItem.userId + '\')">选他</a>'
+                                            }
+                                            tenderListHtml += '<div class="well">\n' +
+                                                '                <div class="row">\n' +
+                                                '                    <img alt="" class="img-circle" src="/assets/apps/account/images/avatar.png\"><span class="h3">' + tenderItem.userName + '</span>' + employersBtn +
+                                                '                </div>\n' +
+                                                '                <div class="row">\n' +
+                                                '                    <div class="col-md-6 col-md-offset-6">\n' +
+                                                '                        <label class="col-md-3 control-label h4"> 投标宣言 </label>\n' +
+                                                '                        <div class="col-md-9">\n' +
+                                                '                                <span class="form-control" ><b>' + tenderItem.manifesto +
+                                                '                                </b></span>' +
+                                                '                        </div>\n' +
+                                                '                    </div>\n' +
+                                                '\n' +
+                                                '                </div>' +
+                                                '            </div>';
+                                        }
+
+                                        $("#tenderListContainer").html(tenderListHtml);
+                                    }
+                                }
+                                $("#" + k).html(detail[k]);
+                            }
+                        },
+                        fail: function (data) {
+                            swal({
+                                title: "",
+                                text: data.msg,
+                                type: "error",
+                                button: "OK",
+                            });
+                        }
+                    })
+                },
+                tenderFun: function () {
+                    var manifesto = $("#manifesto").val();
+                    $("#manifesto")
+                        .closest(".form-group").removeClass("has-error");
+                    if (!manifesto) {
+                        $("#manifesto")
+                            .closest(".form-group").addClass("has-error");
+                        swal('', '请填写投标宣言！', 'warning');
+                        return false;
+                    }
+                    sdxCommon.ajaxLoad(sdxCommon.apiRoot + "/bimjx/socialPlatform/tender", {
+                        method: "post",
+                        data: {
+                            PROID: PROID,
+                            manifesto: manifesto
+                        },
+                        success: function (data) {
+                            swal({
+                                title: "",
+                                text: data.msg,
+                                type: "success",
+                                button: "OK",
+                            });
+                            sdxObj.initDetails();
+
+                        },
+                        fail: function (data) {
+                            if (data.error == 6) {
+                                swal({
+                                    title: "",
+                                    text: data.msg,
+                                    type: "warning",
+                                    button: "OK",
+                                }, function () {
+                                    heardFormLogin.keepalive();
+                                    sdxCommon.apiCookies.set("prev", "/application/socialPlatform/socialPlatDetail.html");
+                                    $("#body-container").load("/application/login/login.html");
+                                });
+                            } else {
+                                swal({
+                                    title: "",
+                                    text: data.msg,
+                                    type: "error",
+                                    button: "OK",
+                                });
+                            }
+                        }
+                    })
+                },
+                designate: function (userId) {
+                    sdxCommon.ajaxLoad(sdxCommon.apiRoot + "/bimjx/socialPlatform/designate", {
+                        method: "post",
+                        data: {
+                            PROID: PROID,
+                            userId: userId
+                        },
+                        success: function (data) {
+                            swal({
+                                title: "",
+                                text: data.msg,
+                                type: "success",
+                                button: "OK",
+                            });
+                            sdxObj.initDetails();
+
+                        },
+                        fail: function (data) {
+                            if (data.error == 6) {
+                                swal({
+                                    title: "",
+                                    text: data.msg,
+                                    type: "warning",
+                                    button: "OK",
+                                }, function () {
+                                    heardFormLogin.keepalive();
+                                    sdxCommon.apiCookies.set("prev", "/application/socialPlatform/socialPlatDetail.html");
+                                    $("#body-container").load("/application/login/login.html");
+                                });
+                            } else {
+                                swal({
+                                    title: "",
+                                    text: data.msg,
+                                    type: "error",
+                                    button: "OK",
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        }();
+        jQuery(document).ready(function() {
+            console.log("bim匠心/社会平台/项目详情");
+            sdxObj.initDetails();
+            scrollTo(0,0);
+
+
+        });
+
+    </script>

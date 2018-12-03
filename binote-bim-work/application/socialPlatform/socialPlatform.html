@@ -1,0 +1,218 @@
+
+<div class="container well">
+    <div class="row">
+        <div class="col-md-2">
+            <span class="glyphicon glyphicon-th-large"></span>
+            分类：
+        </div>
+        <div class="col-md-10">
+            <ul class="nav nav-pills" id="proClassifySearchBar">
+                <li role="presentation" class="active"><a href="javascript:;" data-proClassify="">不限</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="钢筋">钢筋</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="土建">土建</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="安装">安装</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="预算计价">预算计价</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="结算计价">结算计价</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="BIM5D">BIM5D</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="三维场布">三维场布</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="梦龙计划">梦龙计划</a></li>
+                <li role="presentation"><a href="javascript:;" data-proClassify="其他">其他</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span class="glyphicon glyphicon-th-large"></span>
+            地区：
+        </div>
+        <div class="col-md-10">
+            <ul class="nav nav-pills" id="areaSearchBar">
+                <li role="presentation" class="active"><a href="javascript:;" data-area="">江西省宜春市</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="丰城市">丰城市</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="樟树市">樟树市</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="袁州区">袁州区</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="高安市">高安市</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="铜鼓县">铜鼓县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="靖安县">靖安县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="宜丰县">宜丰县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="奉新县">奉新县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="万载县">万载县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="上高县">上高县</a></li>
+                <li role="presentation"><a href="javascript:;" data-area="其他">其他</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+<div class="container">
+    <div class="row">
+        <h2 class="col-md-3">
+            所有项目：
+        </h2>
+        <div class="col-md-offset-6 col-md-3">
+            <button class="btn btn-danger" type="button" onclick="sdxObj.publish()">
+                发布项目
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container" id="main_container">
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="pagination">
+                <li id="pagePrev">
+                    <a class="btn sbold green">
+                        <i class="fa fa-angle-left"></i> 上一页
+                    </a>
+                </li>
+                <li id="pageText">
+                    <a class="btn default"> 正在初始化表格…… </a>
+                </li>
+                <li id="pageNext">
+                    <a class="btn sbold green">
+                        下一页 <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var sdxObj=function () {
+        var currentPage = 1;
+        var totalPage = 1;
+        var showCount = 15;
+        var proClassify="";
+        var area="";
+
+        $('#pagePrev a').on('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                sdxObj.init();
+            }
+        });
+        $('#pageNext a').on('click', function() {
+            if (currentPage < totalPage) {
+                currentPage++;
+                sdxObj.init();
+            }
+        });
+
+
+        return{
+            publish:function () {
+                console.log(sdxCommon.username);
+                heardFormLogin.keepalive();
+                $("#body-container").load("/application/socialPlatform/socialPlatSubmit.html");
+                /*heardFormLogin.keepalive();
+                    if(sdxCommon.username){
+                        $("#body-container").load("/application/socialPlatform/socialPlatform.html");
+                    }else{
+                        swal({
+                            title:"",
+                            text: "您还未登录，请登录后再发布项目！",
+                            type: "warning",
+                            button: "OK",
+                        },function(){
+                            sdxCommon.apiCookies.set("prev","/application/socialPlatform/socialPlatSubmit.html");
+                            $("#body-container").load("/application/login/login.html");
+                        });
+                }*/
+            },
+            init:function () {
+                sdxCommon.ajaxLoad(sdxCommon.apiRoot+"/bimjx/socialPlatform/socialPlatform",{
+                        data:{
+                            currentPage:currentPage,
+                            showCount:showCount,
+                            proClassify:proClassify,
+                            area:area,
+                        },
+                        success:function (data) {
+                        console.log(data);
+                        currentPage = data.obj.page.currentPage;
+                        totalPage = data.obj.page.totalPage;
+
+                        if (currentPage < 2) {
+                            $('#pagePrev').addClass('disabled');
+                            $('#pagePrev a').removeClass('green');
+                        } else {
+                            $('#pagePrev').removeClass('disabled');
+                            $('#pagePrev a').addClass('green');
+                        }
+
+                        if (currentPage == totalPage) {
+                            $('#pageNext').addClass('disabled');
+                            $('#pageNext a').removeClass('green');
+                        } else {
+                            $('#pageNext').removeClass('disabled');
+                            $('#pageNext a').addClass('green');
+                        }
+
+                        $('#pageText a').html("当前显示第" + currentPage + "页/共" + totalPage + "页，合计" + data.obj.page.totalResult + "条数据");
+
+
+                        //渲染列表数据
+                        var listHtml="";
+                        if(data.obj.list.length>0) {
+                            for (var i = 0; i < data.obj.list.length; i++) {
+                                var listItem = data.obj.list[i];
+                                var state = listItem.state == 1 ? "投标中" :
+                                    listItem.state == 2 ? "待交付" :
+                                        listItem.state == 3 ? "已完成" :
+                                            listItem.state == -1 ? "作废" : "无效状态";
+                                listHtml += '<div class=" well"> <div class="row"> <h3 class="col-md-8"> <a href="javascript:;" data-proId="'+listItem.PROID+'">' + notNull(listItem.proName) + '</a> </h3> <div class="col-md-4 text-info">' + state + '</div> </div> <div class="row"> <h3 class="col-md-8 text-danger">￥' + listItem.price + ' </h3> <div class="col-md-4 text-muted">' + notNull(listItem.createTime) + '</div> </div> </div>';
+                            }
+                        }else{
+                            listHtml="<div class='well text-center'><b class='text-danger'>抱歉！没有查询到该条件下的项目，请重新选择条件！</b></div>";
+                        }
+                        $("#main_container").html(listHtml);
+                    },
+                    fail:function (data) {
+                        swal({
+                            title:"",
+                            text: data.msg,
+                            type: "error",
+                            button: "OK",
+                        });
+                    }
+                })
+            },
+            searchProClassify:function (elem) {
+                var $elem=$(elem);
+                proClassify=$elem.attr("data-proClassify");
+                sdxObj.init();
+                $elem.parent().addClass("active").siblings().removeClass("active");
+            },
+            searchArea:function (elem) {
+                var $elem=$(elem);
+                area=$elem.attr("data-area");
+                sdxObj.init();
+                $elem.parent().addClass("active").siblings().removeClass("active");
+            }
+        }
+    }();
+    $(function () {
+        sdxObj.init();
+        sdxCommon.apiCookies.set("prev","/application/socialPlatform/socialPlatform.html");
+        console.log("bim匠心/社会平台/项目列表");
+        scrollTo(0,0);
+        $("#proClassifySearchBar").on("click","a",function () {
+            sdxObj.searchProClassify(this);
+        });
+        $("#areaSearchBar").on("click","a",function () {
+            sdxObj.searchArea(this);
+        });
+        $("#main_container").on("click","a",function () {
+            var elem=$(this);
+            var proId=elem.attr("data-proId");
+            sdxCommon.rootSpace.PROID=proId;
+            $("#body-container").load("/application/socialPlatform/socialPlatDetail.html");
+
+        })
+
+    })
+</script>

@@ -1,0 +1,417 @@
+<link rel="stylesheet" href="/assets/apps/account/styles/profile.css">
+<link rel="stylesheet" href="/assets/plugins/bootstrap-fileinput-4.3.2/css/fileinput.min.css">
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN PROFILE SIDEBAR -->
+    <div class="profile-sidebar">
+      <!-- PORTLET MAIN -->
+      <div class="portlet light profile-sidebar-portlet ">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="/assets/apps/account/images/avatar.png" class="img-responsive" alt=""> </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name"></div>
+          <div class="profile-usertitle-job"></div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <!--
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-circle green btn-sm">[部门]</button>
+          <button type="button" class="btn btn-circle red btn-sm">[职位]</button>
+        </div>
+        -->
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <!--<div class="profile-usermenu">
+          <ul class="nav">
+            <li>
+              <a href="javascript:;"><i class="icon-pin"></i> 登陆地址：<span id="lastIP"></span></a>
+            </li>
+            <li>
+              <a href="javascript:;"><i class="icon-speedometer"></i> 登录时间：<span id="lastLogin"></span></a>
+            </li>
+          </ul>
+        </div>-->
+        <!-- END MENU -->
+      </div>
+      <!-- END PORTLET MAIN -->
+      <!-- PORTLET MAIN -->
+      <!--<div class="portlet light ">
+        <div>
+          <h4 class="profile-desc-title">联系方式</h4>
+          <span class="profile-desc-text">文一西路75号高兴软件产业园3号楼405室<br>中国, 浙江省杭州市西湖区</span>
+          <div class="margin-top-20 profile-desc-link">
+            <i class="icon-screen-smartphone "></i>
+            <a id="myMobile"></a>
+          </div>
+          <div class="margin-top-20 profile-desc-link">
+            <i class="icon-envelope-letter"></i>
+            <a id="myEmail"></a>
+          </div>
+        </div>
+      </div>-->
+      <!-- END PORTLET MAIN -->
+    </div>
+    <!-- END BEGIN PROFILE SIDEBAR -->
+    <!-- BEGIN PROFILE CONTENT -->
+    <div class="profile-content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="portlet light ">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">账号信息</span>
+              </div>
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab_info" data-toggle="tab">个人信息</a>
+                </li>
+                <li>
+                  <a href="#tab_password" data-toggle="tab">更改密码</a>
+                </li>
+              </ul>
+            </div>
+            <div class="portlet-body">
+              <div class="tab-content">
+                <!-- PERSONAL INFO TAB -->
+                <div class="tab-pane active" id="tab_info">
+                  <form role="form" action="javascript:;" id="formInfo">
+                    <div class="alert alert-danger display-hide">
+                      <button class="close" data-close="alert"></button>数据校验失败，请参照反馈状态进行修改</div>
+                    <div class="form-group">
+                      <label class="control-label">登录邮箱 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="email" placeholder="请输入您的登录邮箱" class="form-control" name="userEmail" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">用户名 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="text" placeholder="请输入您的用户名" class="form-control" name="userName" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">手机号码 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="text" placeholder="请输入您的手机号码" class="form-control" name="userTel" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">简历 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input id="input-id" name="file" multiple type="file" data-show-caption="true">
+                        <span class="help-block text-danger">仅支持上传一个PDF文件,参与投标必须上传简历；如果无需更换简历请勿选择文件！</span><a  class="btn blue btn-xs" target="_blank" id="resumeUrl">查看简历</a>
+                      </div>
+                    </div>
+                    <div class="margiv-top-10">
+                      <button class="btn green" type="submit"> 保存修改 </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- END PERSONAL INFO TAB -->
+                <!-- CHANGE PASSWORD TAB -->
+                <div class="tab-pane" id="tab_password">
+                  <form action="javascript:;" id="formPassword">
+                    <div class="alert alert-danger display-hide">
+                      <button class="close" data-close="alert"></button>数据校验失败，请参照反馈状态进行修改</div>
+                    <div class="form-group">
+                      <label class="control-label">新密码 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="password" class="form-control" name="newPassWord" placeholder="请输入您的新密码" /> </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">新密码确认 </label>
+                      <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="password" class="form-control" name="confirmPassword" placeholder="请重复输入您的新密码" /> </div>
+                    </div>
+                    <div class="margin-top-10">
+                      <button class="btn green" type="submit"> 修改密码 </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- END CHANGE PASSWORD TAB -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END PROFILE CONTENT -->
+  </div>
+</div>
+<script src="/assets/plugins/bootstrap-fileinput-4.3.2/js/fileinput.min.js"></script>
+<script src="/assets/plugins/bootstrap-fileinput-4.3.2/js/locales/zh.js"></script>
+<script>
+  var sdxObj=function () {
+      return {
+          init:function(){
+              sdxCommon.ajaxLoad(sdxCommon.apiRoot+"/bimjx/userCenter/getInfo", {
+                  success: function (data) {
+                      console.log(data);
+                      var form=$("#formInfo");
+                      var userInfo=data.obj.userInfo;
+                      $("#formInfo [name='userName']").val(userInfo.userName);
+                      $("#formInfo [name='userEmail']").val(userInfo.userEmail);
+                      $("#formInfo [name='userTel']").val(userInfo.userTel);
+                      if(userInfo.resumeUrl){
+                          form.find("#resumeUrl").attr('href',userInfo.resumeUrl).show();
+                      }else{
+                          form.find("#resumeUrl").hide();
+                      }
+                  },
+                  fail: function (data) {
+                      if(data.error==6){
+                          swal({
+                              title:"",
+                              text: data.msg,
+                              type: "warning",
+                              button: "OK",
+                          },function(){
+                              heardFormLogin.keepalive();
+                              sdxCommon.apiCookies.set("prev","/application/socialPlatform/socialPlatDetail.html");
+                              $("#body-container").load("/application/login/login.html");
+                          });
+                      }else{
+                          swal({
+                              title:"",
+                              text: data.msg,
+                              type: "error",
+                              button: "OK",
+                          });
+                      }
+                  },
+              });
+              /*sdxCommon.ajaxLoad(sdxCommon.apiRoot+"bimjx/userCenter/getInfo",{
+                  success:function (data) {
+
+
+
+                  },
+                  fail:function (data) {
+
+                  }
+              });*/
+          },
+          initFileInput: function (ctrlName) {
+              var control = $('#' + ctrlName);
+              control.fileinput({
+                  language: 'zh', //设置语言
+                  uploadUrl: sdxCommon.apiRoot+"/upload", //上传的地址
+                  allowedFileExtensions: ["pdf"],//接收的文件后缀
+                  maxFilesNum : 1,//上传最大的文件数量
+                  //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
+                  uploadAsync: true, //默认异步上传
+                  showUpload: false, //是否显示上传按钮
+                  showRemove : true, //显示移除按钮
+                  showPreview : false, //是否显示预览
+                  showCaption: false,//是否显示标题
+                  browseClass: "btn btn-primary", //按钮样式
+                  //dropZoneEnabled: true,//是否显示拖拽区域
+                  //minImageWidth: 50, //图片的最小宽度
+                  //minImageHeight: 50,//图片的最小高度
+                  //maxImageWidth: 1000,//图片的最大宽度
+                  //maxImageHeight: 1000,//图片的最大高度
+                  maxFileSize: 307200,//单位为kb，如果为0表示不限制文件大小
+                  //minFileCount: 0,
+                  maxFileCount: 1, //表示允许同时上传的最大文件个数
+                  enctype: 'multipart/form-data',
+                  validateInitialCount:true,
+                  previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                  msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+              })
+          },
+          validate:function () {
+              $("#formInfo").validate({
+                  errorElement: "span",
+                  errorClass: "help-block",
+                  rules: {
+                      userName: {
+                          required: true,
+                          rangelength:[2,10]
+                      },
+                      userEmail: {
+                          required: true,
+                          email:true,
+                      },
+                  },
+                  invalidHandler: function(event, validator) { //display error alert on form submit
+                      $("#registerForm .alert-danger").show();
+                  },
+                  errorPlacement: function(error, element) {
+                      var icon = $(element).parent(".input-icon").children("i");
+                      icon.removeClass("fa-check").addClass("fa-warning");
+                      icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                  },
+                  highlight: function(element) { // hightlight error inputs
+                      $(element)
+                          .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                  },
+
+                  unhighlight: function(element) { // revert the change done by hightlight
+                      $(element)
+                          .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                  },
+                  success: function(label, element) {
+                      var icon = $(element).parent(".input-icon").children("i");
+                      $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                      icon.removeClass("fa-warning").addClass("fa-check");
+                  },
+                  submitHandler: function(form) {
+                      $(".alert-danger", $("#formInfo")).hide();
+                      var formData = new FormData($("#formInfo")[0]);  // 要求使用的html对象
+                      $.ajax({
+                          url:sdxCommon.apiRoot+"/bimjx/userCenter/editInfo" ,
+                          type: 'POST',
+                          data: formData,
+                          async: true,
+                          // 下面三个参数要指定，如果不指定，会报一个JQuery的错误
+                          cache: false,
+                          contentType: false,
+                          processData: false,
+                          success: function (data) {
+                              if(data.status){
+                                  swal({
+                                      title:"",
+                                      text: data.msg,
+                                      type: "success",
+                                      button: "OK",
+                                  });
+                                  sdxObj.init();
+                                  heardFormLogin.keepalive();
+                              }else{
+                                  if(data.error==6){
+                                      swal({
+                                          title:"",
+                                          text: data.msg,
+                                          type: "warning",
+                                          button: "OK",
+                                      },function(){
+                                          heardFormLogin.keepalive();
+                                          $("#body-container").load("/application/login/login.html");
+                                      });
+                                  }else{
+                                      swal({
+                                          title:"",
+                                          text: data.msg,
+                                          type: "error",
+                                          button: "OK",
+                                      });
+                                  }
+                              }
+                          },
+                          error: function (data) {
+                              console.log(data)
+                          }
+                      });
+                  }
+              });
+              $("#formPassword").validate({
+                  errorElement: "span",
+                  errorClass: "help-block",
+                  rules: {
+                      newPassWord: {
+                          minlength: 6,
+                          required: true
+                      },
+                      confirmPassword: {
+                          minlength: 6,
+                          required: true,
+                          equalTo: "#formPassword input[name=newPassWord]"
+                      }
+                  },
+                  invalidHandler: function(event, validator) { //display error alert on form submit
+                      $("#registerForm .alert-danger").show();
+                  },
+                  errorPlacement: function(error, element) {
+                      var icon = $(element).parent(".input-icon").children("i");
+                      icon.removeClass("fa-check").addClass("fa-warning");
+                      icon.attr("data-original-title", error.text()).tooltip({ "container": "body" });
+                  },
+                  highlight: function(element) { // hightlight error inputs
+                      $(element)
+                          .closest(".form-group").removeClass("has-success").addClass("has-error"); // set error class to the control group
+                  },
+
+                  unhighlight: function(element) { // revert the change done by hightlight
+                      $(element)
+                          .closest(".form-group").removeClass("has-error"); // set error class to the control group
+                  },
+                  success: function(label, element) {
+                      var icon = $(element).parent(".input-icon").children("i");
+                      $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                      icon.removeClass("fa-warning").addClass("fa-check");
+                  },
+                  submitHandler: function(form) {
+                      $(".alert-danger", $("#formPassword")).hide();
+                      sdxCommon.ajaxLoad(sdxCommon.apiRoot+"/bimjx/userCenter/editPassword",{
+                          method:"POST",
+                          data:{
+                              userPwd:$("#formPassword [name='confirmPassword']").val(),
+                          },
+                          success:function (data) {
+                              swal({
+                                  title:"",
+                                  text: data.msg,
+                                  type: "success",
+                                  button: "OK",
+                              },function () {
+                                  sdxCommon.apiCookies.remove("apiToken");
+                                  sdxCommon.apiCookies.remove("username");
+                                  sdxCommon.ajaxLoad(sdxCommon.apiRoot + '/bimjx/login/logout',{
+                                      "success":function (data) {
+                                          sdxCommon.apiCookies.set("prev","/application/userCenter/userCenter.html");
+                                          window.location = "/";
+                                      },
+                                      "fail": function(data) {
+                                          swal("",data.msg,"error");
+                                      },
+                                  });
+                              });
+                          },
+                          fail:function (data) {
+                              if(data.error==6){
+                                  swal({
+                                      title:"",
+                                      text: data.msg,
+                                      type: "warning",
+                                      button: "OK",
+                                  },function(){
+                                      heardFormLogin.keepalive();
+                                      $("#body-container").load("/application/login/login.html");
+                                  });
+                              }else{
+                                  swal({
+                                      title:"",
+                                      text: data.msg,
+                                      type: "error",
+                                      button: "OK",
+                                  });
+                              }
+                          }
+                      })
+                  }
+              });
+          }
+      }
+  }();
+  $(function () {
+      sdxObj.initFileInput("input-id");
+      scrollTo(0,0);
+      sdxObj.init();
+      sdxObj.validate();
+  })
+</script>
+
+
+<!--nav nav-pills nav-stacked-->

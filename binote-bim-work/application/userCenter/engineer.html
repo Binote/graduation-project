@@ -1,0 +1,87 @@
+<div class="portlet light bordered" id="sdxList">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-truck font-dark"></i>
+      <span class="caption-subject font-dark sbold uppercase"> 个人中心 / 工程师中心</span>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <h2>您参与投标的项目</h2>
+    <hr>
+    <div id="main_container">
+
+    </div>
+  </div>
+</div>
+<script>
+  var sdxObj=function () {
+      return {
+          init:function(){
+              sdxCommon.ajaxLoad(sdxCommon.apiRoot+"/bimjx/userCenter/engineerList", {
+                  success: function (data) {
+                      console.log(data);
+                      var listHtml="";
+                      if(data.obj.list.length>0) {
+                          for (var i = 0; i < data.obj.list.length; i++) {
+                              var listItem = data.obj.list[i];
+                              var state = listItem.state == 1 ? "投标中" :
+                                  listItem.state == 2 ? "待交付" :
+                                      listItem.state == 3 ? "已完成" :
+                                          listItem.state == -1 ? "作废" : "无效状态";
+                              listHtml += '<div class=" well"> <div class="row"> <h3 class="col-md-8"> <a href="javascript:;" data-proId="'+listItem.PROID+'">' + notNull(listItem.proName) + '</a> </h3> <div class="col-md-4 text-info">' + state + '</div> </div> <div class="row"> <h3 class="col-md-8 text-danger">￥' + listItem.price + ' </h3> <div class="col-md-4 text-muted">' + notNull(listItem.createTime) + '</div> </div> </div>';
+                          }
+                      }else{
+                          listHtml="<div class='well text-center'><b class='text-danger'>抱歉！您还没有参与投标的项目，去投标吧！</b></div>";
+                      }
+                      $("#main_container").html(listHtml);
+                  },
+                  fail: function (data) {
+                      if(data.error==6){
+                          swal({
+                              title:"",
+                              text: data.msg,
+                              type: "warning",
+                              button: "OK",
+                          },function(){
+                              heardFormLogin.keepalive();
+                              sdxCommon.apiCookies.set("prev","/application/socialPlatform/socialPlatDetail.html");
+                              $("#body-container").load("/application/login/login.html");
+                          });
+                      }else{
+                          swal({
+                              title:"",
+                              text: data.msg,
+                              type: "error",
+                              button: "OK",
+                          });
+                      }
+                  },
+              });
+              /*sdxCommon.ajaxLoad(sdxCommon.apiRoot+"bimjx/userCenter/getInfo",{
+                  success:function (data) {
+
+
+
+                  },
+                  fail:function (data) {
+
+                  }
+              });*/
+          },
+      }
+  }();
+  $(function () {
+      scrollTo(0,0);
+      sdxObj.init();
+      $("#main_container").on("click","a",function () {
+          var elem=$(this);
+          var proId=elem.attr("data-proId");
+          sdxCommon.rootSpace.PROID=proId;
+          $("#body-container").load("/application/socialPlatform/socialPlatDetail.html");
+
+      })
+  })
+</script>
+
+
+<!--nav nav-pills nav-stacked-->
